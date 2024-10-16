@@ -21,8 +21,16 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   if (!isOpen) return null; // Si isOpen est false, la modale n'est pas affichée
 
+  // Fonction pour gérer le clic sur le backdrop
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    // Vérifiez si l'élément cliqué est le backdrop (c'est-à-dire la div principale)
+    if (e.currentTarget === e.target) {
+      onClose(); // Ferme la modale
+    }
+  };
+
   return (
-    <div className={`modal-backdrop ${className}`} style={style}>
+    <div className={`modal-backdrop ${className}`} style={style} onClick={handleBackdropClick}>
       <div className="modal-content">
         {title && <h2>{title}</h2>}
         <div className="modal-body">{children}</div>
