@@ -108,7 +108,7 @@ export default App;
 </Modal>
 ```
 ## Contribuer
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir des problèmes ou des demandes de tirage pour améliorer ce plugin.
+Les contributions sont les bienvenues ! N'hésitez pas à participer à son évolution.
 
 ## License
 Ce projet est sous licence ISC.
