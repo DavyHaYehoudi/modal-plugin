@@ -1,54 +1,51 @@
-import React, { useState, ReactNode } from "react";
+import React from "react";
+import "./styles.css";
+import { ModalProps } from "./types";
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
-}
-
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  if (!isOpen) return null;
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  title = "Default Title",
+  children,
+  className = "",
+  style = {},
+  showCancelButton = false,
+  showConfirmButton = false,
+  showOkButton = true, // Par défaut on affiche le bouton "OK"
+  cancelButtonText = "Cancel",
+  confirmButtonText = "Confirm",
+  okButtonText = "OK",
+  onCancel,
+  onConfirm,
+  onOk,
+}) => {
+  if (!isOpen) return null; // Si isOpen est false, la modale n'est pas affichée
 
   return (
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
-        <button onClick={onClose} style={styles.closeButton}>
-          &times;
-        </button>
-        <div>{children}</div>
+    <div className={`modal-backdrop ${className}`} style={style}>
+      <div className="modal-content">
+        {title && <h2>{title}</h2>}
+        <div className="modal-body">{children}</div>
+        <div className="modal-footer">
+          {showCancelButton && (
+            <button onClick={onCancel} className="cancel-button">
+              {cancelButtonText}
+            </button>
+          )}
+          {showConfirmButton && (
+            <button onClick={onConfirm} className="confirm-button">
+              {confirmButtonText}
+            </button>
+          )}
+          {showOkButton && (
+            <button onClick={onOk || onClose} className="ok-button">
+              {okButtonText}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
-};
-
-const styles = {
-  overlay: {
-    position: "fixed" as const,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modal: {
-    backgroundColor: "#fff",
-    padding: "20px",
-    borderRadius: "8px",
-    minWidth: "300px",
-    position: "relative" as const,
-  },
-  closeButton: {
-    position: "absolute" as const,
-    top: "10px",
-    right: "10px",
-    background: "none",
-    border: "none",
-    fontSize: "20px",
-    cursor: "pointer",
-  },
 };
 
 export default Modal;
