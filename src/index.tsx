@@ -30,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className={`modal-backdrop ${className}`} style={style} onClick={handleBackdropClick}>
+    <div id="modal" className={`modal-backdrop ${className}`} style={style} onClick={handleBackdropClick}>
       <div className="modal-content">
         {title && <h2>{title}</h2>}
         <div className="modal-body">{children}</div>

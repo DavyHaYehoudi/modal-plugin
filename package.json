@@ -1,6 +1,6 @@
 {
   "name": "@davy-dev/react-modal-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "scripts": {
     "build": "tsc && copyfiles -u 1 ./src/styles.css ./dist/",
