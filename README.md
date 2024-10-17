@@ -7,11 +7,11 @@ Un composant modal réutilisable pour les applications React, écrit en TypeScri
 Pour installer le plugin, utilisez npm :
 
 ```bash
-npm install react-modal-plugin
+npm install @davy-dev/react-modal-plugin
 ```  
 ou bien  
 ```bash
-yarn add react-modal-plugin
+yarn add @davy-dev/react-modal-plugin
 ```
 ## Utilisation
 
@@ -22,7 +22,7 @@ import Modal from 'react-modal-plugin';
 
 Voici un exemple d'utilisation du composant modal :
 ```jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal-plugin';
 
 const App = () => {
