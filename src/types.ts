@@ -11,6 +11,9 @@ export interface ModalProps {
   cancelButtonText?: string; // Texte du bouton "Annuler"
   confirmButtonText?: string; // Texte du bouton "Confirmer"
   okButtonText?: string; // Texte du bouton "OK"
+  cancelButtonClassName?: string;
+  confirmButtonClassName?: string;
+  okButtonClassName?: string;
   onCancel?: () => void; // Action quand on clique sur "Annuler"
   onConfirm?: () => void; // Action quand on clique sur "Confirmer"
   onOk?: () => void; // Action quand on clique sur "OK"

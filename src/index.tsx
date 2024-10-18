@@ -15,6 +15,9 @@ const Modal: React.FC<ModalProps> = ({
   cancelButtonText = "Cancel",
   confirmButtonText = "Confirm",
   okButtonText = "OK",
+  cancelButtonClassName = "",
+  confirmButtonClassName = "",
+  okButtonClassName = "",
   onCancel,
   onConfirm,
   onOk,
@@ -32,21 +35,22 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <div id="modal" className={`modal-backdrop ${className}`} style={style} onClick={handleBackdropClick}>
       <div className="modal-content">
-        {title && <h2>{title}</h2>}
+        {title && <h2>{title}</h2> }
+        <hr className="modal-divider" />
         <div className="modal-body">{children}</div>
         <div className="modal-footer">
           {showCancelButton && (
-            <button onClick={onCancel} className="cancel-button">
+            <button onClick={onCancel} className={`cancel-button ${cancelButtonClassName}`}>
               {cancelButtonText}
             </button>
           )}
           {showConfirmButton && (
-            <button onClick={onConfirm} className="confirm-button">
+            <button onClick={onConfirm} className={`confirm-button ${confirmButtonClassName}`}>
               {confirmButtonText}
             </button>
           )}
           {showOkButton && (
-            <button onClick={onOk || onClose} className="ok-button">
+            <button onClick={onOk || onClose} className={`ok-button ${okButtonClassName}`}>
               {okButtonText}
             </button>
           )}
