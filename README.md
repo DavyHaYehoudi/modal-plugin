@@ -79,11 +79,15 @@ export default App;
 | showConfirmButton | boolean             | Affiche le bouton "Confirmer".                                                               |
 | showOkButton      | boolean             | Affiche le bouton "OK". (Par défaut, il est affiché)                                         |
 | cancelButtonText  | string              | Texte du bouton "Annuler".                                                                   |
+| cancelButtonClassName | string | Classe CSS pour le bouton "Annuler" |
 | confirmButtonText | string              | Texte du bouton "Confirmer".                                                                 |
+| confirmButtonClassName | string | Classe CSS pour le bouton "Confirmer" |
 | okButtonText      | string              | Texte du bouton "OK".                                                                        |
+| okButtonClassName | string | Classe CSS pour le bouton "OK" |
 | onCancel          | () => void          | Fonction appelée lorsque l'utilisateur clique sur "Annuler".                                 |
 | onConfirm         | () => void          | Fonction appelée lorsque l'utilisateur clique sur "Confirmer".                               |
 | onOk              | () => void          | Fonction appelée lorsque l'utilisateur clique sur "OK". Si non spécifié, la modale se ferme. |
+
 
 ## Exemples d'Utilisation
 
