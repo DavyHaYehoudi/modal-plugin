@@ -44,17 +44,11 @@ const App = () => {
         onClose={closeModal}
         title="Title of the Modal"
         showCancelButton={true}
-        showConfirmButton={true}
-        cancelButtonText="Cancel"
-        confirmButtonText="Confirm"
-        cancelButtonClassName = ""
-        confirmButtonClassName = "",
-        okButtonClassName = ""
+        cancelButtonText="Cancel this action"
+        cancelButtonClassName = "cancel-class-modal"
+        okButtonText = "Yes, I'am sure."
+        okButtonClassName = "ok-class-modal"
         onCancel={closeModal}
-        onConfirm={() => {
-          alert('Action confirmed!');
-          closeModal();
-        }}
       >
         <p>Content of the modal</p>
       </Modal>
@@ -67,24 +61,22 @@ export default App;
 
 ## Component Properties
 
-| Property             | Type                    | Required | Default Value | Description                                                                 |
-|----------------------|-------------------------|----------|---------------|-----------------------------------------------------------------------------|
-| `isOpen`             | `boolean`               | Yes      | N/A           | Controls the visibility of the modal.                                       |
-| `onClose`            | `() => void`            | Yes      | N/A           | Function to close the modal.                                                |
-| `title`              | `React.ReactNode`       | Yes      | N/A           | The title of the modal, can be a string or JSX.                             |
-| `children`           | `React.ReactNode`       | No       | N/A           | Content of the modal.                                                       |
-| `className`          | `string`                | No       | `""`          | Optional CSS classes for additional styling of the modal.                   |
-| `style`              | `React.CSSProperties`   | No       | `{}`          | Inline styles for the modal.                                                |
-| `showCancelButton`   | `boolean`               | No       | `false`       | Controls whether to display the "Cancel" button.                            |
-| `showOkButton`       | `boolean`               | No       | `true`        | Controls whether to display the "OK" button.                                |
-| `cancelButtonText`   | `string`                | No       | `"Cancel"`    | Text for the "Cancel" button.                                               |
-| `okButtonText`       | `string`                | No       | `"OK"`        | Text for the "OK" button.                                                   |
-| `cancelButtonClassName` | `string`             | No       | `""`          | Optional CSS classes for the "Cancel" button.                               |
-| `okButtonClassName`  | `string`                | No       | `""`          | Optional CSS classes for the "OK" button.                                   |
-| `onCancel`           | `() => void`            | No       | N/A           | Function to execute when the "Cancel" button is clicked.                    |
-| `onOk`               | `() => void`            | No       | `onClose`     | Function to execute when the "OK" button is clicked (defaults to `onClose`).|
-
-
+| Property             | Type                    | Default Value | Description                                                                 |
+|----------------------|-------------------------|---------------|-----------------------------------------------------------------------------|
+| `isOpen`             | `boolean`               | N/A           | Controls the visibility of the modal. **Required.**                         |
+| `onClose`            | `() => void`            | N/A           | Function to close the modal. **Required.**                                  |
+| `title`              | `React.ReactNode`       | N/A           | The title of the modal, can be a string or JSX. **Required.**               |
+| `children`           | `React.ReactNode`       | N/A           | Content of the modal. Optional.                                             |
+| `className`          | `string`                | `""`          | Optional CSS classes for additional styling of the modal.                   |
+| `style`              | `React.CSSProperties`   | `{}`          | Inline styles for the modal. Optional.                                      |
+| `showCancelButton`   | `boolean`               | `false`       | Controls whether to display the "Cancel" button. Optional.                  |
+| `showOkButton`       | `boolean`               | `true`        | Controls whether to display the "OK" button. Optional.                      |
+| `cancelButtonText`   | `string`                | `"Cancel"`    | Text for the "Cancel" button. Optional.                                     |
+| `okButtonText`       | `string`                | `"OK"`        | Text for the "OK" button. Optional.                                         |
+| `cancelButtonClassName` | `string`             | `""`          | Optional CSS classes for the "Cancel" button.                               |
+| `okButtonClassName`  | `string`                | `""`          | Optional CSS classes for the "OK" button.                                   |
+| `onCancel`           | `() => void`            | N/A           | Function to execute when the "Cancel" button is clicked. Optional.          |
+| `onOk`               | `() => void`            | `onClose`     | Function to execute when the "OK" button is clicked (defaults to `onClose`). Optional. |
 
 ## Examples of Use
 
