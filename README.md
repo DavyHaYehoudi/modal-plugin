@@ -1,30 +1,30 @@
 # React Modal Plugin
 
-Un composant modal réutilisable pour les applications React, écrit en TypeScript. Ce plugin offre une interface simple pour afficher des modales personnalisées avec des boutons d'action.
+A reusable modal component for React apps, written in TypeScript. This plugin provides a simple interface to display custom modals with action buttons.
 
 ## Installation
 
-Pour installer le plugin, utilisez npm :
+To install the plugin, use npm :
 
 ```bash
 npm install @davy-dev/react-modal-plugin
 ```
 
-ou bien
+or
 
 ```bash
 yarn add @davy-dev/react-modal-plugin
 ```
 
-## Utilisation
+## Use
 
-Importez le composant Modal dans votre fichier React :
+Import the Modal component into your React file :
 
 ```jsx
 import Modal from "react-modal-plugin";
 ```
 
-Voici un exemple d'utilisation du composant modal :
+Here is an example of using the modal component :
 
 ```jsx
 import { useState } from 'react';
@@ -38,25 +38,25 @@ const App = () => {
 
   return (
     <div>
-      <button onClick={openModal}>Ouvrir la Modale</button>
+      <button onClick={openModal}>Open the Modal</button>
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
-        title="Titre de la Modale"
+        title="Title of the Modal"
         showCancelButton={true}
         showConfirmButton={true}
-        cancelButtonText="Annuler"
-        confirmButtonText="Confirmer"
+        cancelButtonText="Cancel"
+        confirmButtonText="Confirm"
         cancelButtonClassName = ""
         confirmButtonClassName = "",
         okButtonClassName = ""
         onCancel={closeModal}
         onConfirm={() => {
-          alert('Action confirmée!');
+          alert('Action confirmed!');
           closeModal();
         }}
       >
-        <p>Contenu de la modale</p>
+        <p>Content of the modal</p>
       </Modal>
     </div>
   );
@@ -65,47 +65,52 @@ const App = () => {
 export default App;
 ```
 
-## Propriétés du Composant
+## Component Properties
 
-| Propriété         | Type                | Description                                                                                  |
-| ----------------- | ------------------- | -------------------------------------------------------------------------------------------- |
-| isOpen            | boolean             | Contrôle l'affichage de la modale.                                                           |
-| onClose           | () => void          | Fonction appelée pour fermer la modale.                                                      |
-| title             | string              | Titre de la modale.                                                                          |
-| children          | React.ReactNode     | Contenu de la modale.                                                                        |
-| className         | string              | Classes CSS personnalisées.                                                                  |
-| style             | React.CSSProperties | Styles en ligne personnalisés.                                                               |
-| showCancelButton  | boolean             | Affiche le bouton "Annuler".                                                                 |
-| showConfirmButton | boolean             | Affiche le bouton "Confirmer".                                                               |
-| showOkButton      | boolean             | Affiche le bouton "OK". (Par défaut, il est affiché)                                         |
-| cancelButtonText  | string              | Texte du bouton "Annuler".                                                                   |
-| cancelButtonClassName | string | Classe CSS pour le bouton "Annuler" |
-| confirmButtonText | string              | Texte du bouton "Confirmer".                                                                 |
-| confirmButtonClassName | string | Classe CSS pour le bouton "Confirmer" |
-| okButtonText      | string              | Texte du bouton "OK".                                                                        |
-| okButtonClassName | string | Classe CSS pour le bouton "OK" |
-| onCancel          | () => void          | Fonction appelée lorsque l'utilisateur clique sur "Annuler".                                 |
-| onConfirm         | () => void          | Fonction appelée lorsque l'utilisateur clique sur "Confirmer".                               |
-| onOk              | () => void          | Fonction appelée lorsque l'utilisateur clique sur "OK". Si non spécifié, la modale se ferme. |
+| Property             | Type                    | Required | Default Value | Description                                                                 |
+|----------------------|-------------------------|----------|---------------|-----------------------------------------------------------------------------|
+| `isOpen`             | `boolean`               | Yes      | N/A           | Controls the visibility of the modal.                                       |
+| `onClose`            | `() => void`            | Yes      | N/A           | Function to close the modal.                                                |
+| `title`              | `React.ReactNode`       | Yes      | N/A           | The title of the modal, can be a string or JSX.                             |
+| `children`           | `React.ReactNode`       | No       | N/A           | Content of the modal.                                                       |
+| `className`          | `string`                | No       | `""`          | Optional CSS classes for additional styling of the modal.                   |
+| `style`              | `React.CSSProperties`   | No       | `{}`          | Inline styles for the modal.                                                |
+| `showCancelButton`   | `boolean`               | No       | `false`       | Controls whether to display the "Cancel" button.                            |
+| `showOkButton`       | `boolean`               | No       | `true`        | Controls whether to display the "OK" button.                                |
+| `cancelButtonText`   | `string`                | No       | `"Cancel"`    | Text for the "Cancel" button.                                               |
+| `okButtonText`       | `string`                | No       | `"OK"`        | Text for the "OK" button.                                                   |
+| `cancelButtonClassName` | `string`             | No       | `""`          | Optional CSS classes for the "Cancel" button.                               |
+| `okButtonClassName`  | `string`                | No       | `""`          | Optional CSS classes for the "OK" button.                                   |
+| `onCancel`           | `() => void`            | No       | N/A           | Function to execute when the "Cancel" button is clicked.                    |
+| `onOk`               | `() => void`            | No       | `onClose`     | Function to execute when the "OK" button is clicked (defaults to `onClose`).|
 
 
-## Exemples d'Utilisation
 
-1. Modale avec uniquement le bouton OK
+## Examples of Use
+
+1. Modal with only a title and the OK button that closes the modal
 
 ```jsx
 <Modal
   isOpen={isOpen}
   onClose={closeModal}
-  title="Titre de la Modale"
-  showOkButton={true}
-  onOk={closeModal}
+  title="Title of the Modal"
 >
-  <p>Contenu de la modale</p>
+</Modal>
+```
+2. Modal with a custom title, content and the OK button that closes the modal
+
+```jsx
+<Modal
+  isOpen={isOpen}
+  onClose={closeModal}
+  title={<h2 style={{ color: "blue" }}>Custom Title with HTML</h2>}
+>
+  <p>Content of the modal</p>
 </Modal>
 ```
 
-2. Modale avec boutons d'action
+3. Modal with action buttons
 
 ```jsx
 <Modal
@@ -114,21 +119,20 @@ export default App;
   title="Confirmation"
   showCancelButton={true}
   cancelButtonClassName="my-cancel-button"
-  showConfirmButton={true}
   onCancel={closeModal}
-  onConfirm={() => {
-    alert("Action confirmée!");
+  showOkButton={() => {
+    alert("Action confirmed!");
     closeModal();
   }}
 >
-  <p>Êtes-vous sûr de vouloir continuer ?</p>
+  <p>Are you sure you want to continue ?</p>
 </Modal>
 ```
 
-## Contribuer
+## Contribute
 
-Plugin simplement créé pour les besoins d'un projet personnel.
+Plugin simply created for the needs of a personal project.
 
 ## License
 
-Ce projet est sous licence ISC.
+This plugin is free.

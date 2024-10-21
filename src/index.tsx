@@ -5,21 +5,17 @@ import { ModalProps } from "./types";
 const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
-  title = "Default Title",
+  title,
   children,
   className = "",
   style = {},
   showCancelButton = false,
-  showConfirmButton = false,
   showOkButton = true, // Par défaut on affiche le bouton "OK"
   cancelButtonText = "Cancel",
-  confirmButtonText = "Confirm",
   okButtonText = "OK",
   cancelButtonClassName = "",
-  confirmButtonClassName = "",
   okButtonClassName = "",
   onCancel,
-  onConfirm,
   onOk,
 }) => {
   if (!isOpen) return null; // Si isOpen est false, la modale n'est pas affichée
@@ -33,24 +29,32 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div id="modal" className={`modal-backdrop ${className}`} style={style} onClick={handleBackdropClick}>
+    <div
+      id="modal"
+      className={`modal-backdrop ${className}`}
+      style={style}
+      onClick={handleBackdropClick}
+    >
       <div className="modal-content">
-        {title && <h2>{title}</h2> }
+          {/* Affichage du titre */}
+          {typeof title === 'string' ? <h2>{title}</h2> : title}
         <hr className="modal-divider" />
-        <div className="modal-body">{children}</div>
+        {/* Contenu de la modale, s'il existe */}
+        {children && <div className="modal-body">{children}</div>}
         <div className="modal-footer">
           {showCancelButton && (
-            <button onClick={onCancel} className={`cancel-button ${cancelButtonClassName}`}>
+            <button
+              onClick={onCancel}
+              className={`cancel-button ${cancelButtonClassName}`}
+            >
               {cancelButtonText}
             </button>
           )}
-          {showConfirmButton && (
-            <button onClick={onConfirm} className={`confirm-button ${confirmButtonClassName}`}>
-              {confirmButtonText}
-            </button>
-          )}
           {showOkButton && (
-            <button onClick={onOk || onClose} className={`ok-button ${okButtonClassName}`}>
+            <button
+              onClick={onOk || onClose}
+              className={`ok-button ${okButtonClassName}`}
+            >
               {okButtonText}
             </button>
           )}
